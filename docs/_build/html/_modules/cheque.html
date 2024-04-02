@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cheque &mdash; documentación de Administrador_cheques - 0.0.6</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=a44580e6"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=efdbd0b9"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Administrador_cheques
+          </a>
+              <div class="version">
+                0.0.6
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../baseDatos.html">baseDatos module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheque.html">cheque module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chequeDB.html">chequeDB module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../claseBase.html">claseBase module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cliente.html">cliente module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clienteDB.html">clienteDB module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controlador.html">controlador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estado.html">estado module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estadoDB.html">estadoDB module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proveedor.html">proveedor module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proveedorDB.html">proveedorDB module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../script_tablas.html">script_tablas module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validacion_campos.html">validacion_campos module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vista3.html">vista3 module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Administrador_cheques</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">cheque</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para cheque</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">estado</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">cliente</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">proveedor</span> <span class="kn">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="Cheque">
+<a class="viewcode-back" href="../cheque.html#cheque.Cheque">[documentos]</a>
+<span class="k">class</span> <span class="nc">Cheque</span><span class="p">:</span>
+                <span class="c1">#      int, date,         Cliente , str  , Proveedor, int    , date      ,Estado, float</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">fecha_ingreso</span><span class="p">,</span> <span class="n">cliente</span><span class="p">,</span> <span class="n">banco</span><span class="p">,</span><span class="n">proveedor</span><span class="p">,</span><span class="n">nro_cheque</span><span class="p">,</span><span class="n">fecha_pago</span><span class="p">,</span> <span class="n">estado</span><span class="p">,</span> <span class="n">importe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fecha_ingreso</span> <span class="o">=</span> <span class="n">fecha_ingreso</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_banco</span> <span class="o">=</span> <span class="n">banco</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nro_cheque</span> <span class="o">=</span> <span class="n">nro_cheque</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estado</span> <span class="o">=</span> <span class="n">estado</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cliente</span> <span class="o">=</span> <span class="n">cliente</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proveedor</span> <span class="o">=</span> <span class="n">proveedor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fecha_pago</span> <span class="o">=</span> <span class="n">fecha_pago</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_importe</span> <span class="o">=</span> <span class="n">importe</span>
+
+
+
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@id</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="nb">id</span> 
+
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fecha_ingreso</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fecha_ingreso</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@fecha_ingreso</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">fecha_ingreso</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fecha_ingreso</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fecha_ingreso</span> <span class="o">=</span> <span class="n">fecha_ingreso</span> 
+
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">banco</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_banco</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@banco</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">banco</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">banco</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_banco</span> <span class="o">=</span> <span class="n">banco</span>
+
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nro_cheque</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nro_cheque</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@nro_cheque</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">nro_cheque</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nro_cheque</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nro_cheque</span> <span class="o">=</span> <span class="n">nro_cheque</span>
+
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">estado</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estado</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@estado</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">estado</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estado</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estado</span> <span class="o">=</span> <span class="n">estado</span>
+
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cliente</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@cliente</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cliente</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cliente</span> <span class="o">=</span> <span class="n">cliente</span>
+
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">proveedor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proveedor</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@proveedor</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">proveedor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proveedor</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proveedor</span> <span class="o">=</span> <span class="n">proveedor</span>
+    
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fecha_pago</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fecha_pago</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@fecha_pago</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">fecha_pago</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fecha_pago</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fecha_pago</span> <span class="o">=</span> <span class="n">fecha_pago</span>
+ 
+    <span class="c1">#getter</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">importe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_importe</span>
+       
+    <span class="c1">#setter </span>
+    <span class="nd">@importe</span><span class="o">.</span><span class="n">setter</span> 
+    <span class="k">def</span> <span class="nf">importe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">importe</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_importe</span> <span class="o">=</span> <span class="n">importe</span>
+
+
+<div class="viewcode-block" id="Cheque.ver_cheque">
+<a class="viewcode-back" href="../cheque.html#cheque.Cheque.ver_cheque">[documentos]</a>
+    <span class="k">def</span> <span class="nf">ver_cheque</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;id &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fecha ingreso &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_fecha_ingreso</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;banco  &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_banco</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nro cheque &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_nro_cheque</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;estado &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_estado</span><span class="o">.</span><span class="n">descripcion</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cliente &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_cliente</span><span class="o">.</span><span class="n">descripcion</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proveedor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proveedor &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_proveedor</span><span class="o">.</span><span class="n">descripcion</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no hay proveedor&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fecha pago &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">_fecha_pago</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;importe &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_importe</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fin&quot;</span><span class="p">)</span></div>
+</div>
+
+       
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2024, Luciano Fernandez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
